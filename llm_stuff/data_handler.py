@@ -58,6 +58,9 @@ class Markdown_Image:
         new.paste(img2,(0,img1.height))
 
         new = self.__save_image_and_add_filename(new,Path(img2.filename))
+
+        os.remove(img1.filename)
+        os.remove(img2.filename)
         
         return new
 
@@ -199,7 +202,6 @@ class Data_Loader:
             page_content=file_content,
             metadata={'source':str(path)}
         )
-
 
     FILE_HANDLERS = {
         "md":__md_handler,
