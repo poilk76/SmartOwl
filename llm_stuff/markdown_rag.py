@@ -88,9 +88,14 @@ class Knowlage_Base:
 
     @tool
     def search(self,query:str,amount:int=3) -> list[Document]:
+        """Search the user's indexed knowledge base using semantic retrieval. 
+        Returns the most relevant passages from user-provided documents to 
+        ground responses in retrieved context."""
 
         db = Chroma(persist_directory=self.db_path, embedding_function=self.embedding_model)
 
-        return db.similarity_search_with_relevance_scores(query,k=amount)
+        result = db.similarity_search_with_relevance_scores(query,k=amount)
+
+        return f'data:query/result;result,{result}'
 
 

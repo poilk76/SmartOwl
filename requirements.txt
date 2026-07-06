@@ -5,3 +5,4 @@ langchain-community
 langchain-text-splitters
 pymupdf4llm
 pydantic
+wikipedia
